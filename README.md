@@ -2,9 +2,9 @@
 
 [[Paper]](https://arxiv.org/abs/2603.10505) [[Project Page]](https://huggingface.co/spaces/hyungjoochae/verienv-project-page)
 
-**VeriEnv** is a framework that treats language models as environment creators, automatically cloning real-world websites into fully executable, verifiable synthetic environments for training and evaluating autonomous web agents.
+Training autonomous web agents through self-evolution requires both **safe environments** to explore and **verifiable reward signals** to learn from. Learning directly on real-world websites is unsafe (agent actions may interfere with other users or be blocked), and self-generated tasks often lack well-specified ground truths, forcing reliance on error-prone LLM-as-a-judge evaluation.
 
-By exposing controlled internal access via a Python SDK, VeriEnv enables agents to self-generate tasks with deterministic, programmatically verifiable rewards — eliminating reliance on heuristic or LLM-based judges.
+**VeriEnv** addresses these challenges by automatically cloning real-world websites into fully executable synthetic environments — including frontend, backend, and database — using a coding agent. Because VeriEnv has full internal access to each cloned environment via a Python SDK, tasks can be **generated alongside executable validation programs**, enabling automatic validity checks and deterministic evaluation of agent trajectories. As a result, agents trained with VeriEnv learn from **reliable, reproducible training signals** rather than heuristic or LLM-based judgments.
 
 <p align="center">
   <img src="figures/intro-figure.png" width="600" alt="VeriEnv Motivation">
