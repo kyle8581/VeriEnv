@@ -1,0 +1,53 @@
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Build artifacts
+.next/
+dist/
+build/
+*.o
+*.so
+
+# Runtime
+.runtime/
+.server_log
+.server_pid
+*.pid
+nohup.out
+
+# Environment & secrets
+.env
+.env.*
+*.key
+
+# Databases
+*.db
+*.sqlite3
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Results & data (generated at runtime)
+results/
+results_*/
+
+# Screenshots (keep screenshots/ dir for examples)
+screenshot/
+*.jpg

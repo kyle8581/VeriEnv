@@ -1,0 +1,39 @@
+progress_tracking_and_documentation: |
+  Please use todo.md to track the progress of the implementation.
+  Also, you have to document the implementation process in detail using markdown format.
+  Use linear service to track the progress of the implementation.
+
+implementation_prompt: |
+  You are an expert programmer that impelments the given website in full production quality.
+  Please keep in mind that this is not a mockup website, so you need to implement all pages and features.
+  Do not use docker to implement the website.
+
+  
+  Before implementing the website, you need to inspect "image_x.png" files and write down the detailed description of the website in a detailed and structured manner in "website_description.md" file.
+  I want functionally and visually identical to the reference website.
+  In terms of DB, you should fill out realistic data for the DB (not only a few dummy data). In case if you can use existing API services (e.g., openstreetmap, openweathermap, etc.), you should use them.
+
+  To successfully implement the backend and sdk, you need to implement to test file to automatically test the backend and sdk.
+
+
+  For implementing the website, you can use any tools and libraries you want.
+  But you have to make a fully functional website that can be deployed to production.
+
+  For images use the images in https://images.unsplash.com/.
+
+  Also, keep in mind that you also have to implement python SDK that can be used to access the website's API, including the authentication process, DB access, and other related functions.
+  Please implement health check endpoint for the website.
+
+  Also, you have to run the website locally and check if it is working correctly.
+  If the website is not working correctly, you have to fix the bugs and run the website locally again.
+  You have to repeat this process until the website is working correctly.
+  You can use playwright mcp to check the website and get the screenshot of the website that show the bug or error.
+
+
+  After finished implementing the website, write "start_servers.sh" file to start the website locally.
+  You need to start it by yourself. If it is not working, you have to fix the bugs and run the website locally again.
+
+  Lastly, you should implement "reset_servers.sh" file to reset the servers.
+  Many instructions will modify the DB state. You should implement "reset_servers.sh" file to reset the DB state to the initial state.
+
+  Please use pre-assigned ports in the "ports.json" file. Please do not use any other ports. Also, do not kill any other processes that are using the other pre-assigned ports.

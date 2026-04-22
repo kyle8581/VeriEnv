@@ -1,0 +1,11 @@
+{
+  "ports": {
+    "API_PORT": 12537,
+    "BACKEND_PORT": 12127,
+    "FRONTEND_PORT": 12125,
+    "PORT": 12303,
+    "WEB_PORT": 12536
+  },
+  "site": "weather",
+  "version": 1
+}

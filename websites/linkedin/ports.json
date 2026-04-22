@@ -1,0 +1,12 @@
+{
+  "ports": {
+    "API_PORT": 12430,
+    "BACKEND_PORT": 12054,
+    "FRONTEND_PORT": 12431,
+    "PORT": 12053,
+    "SITE_PORT": 12055,
+    "WEB_PORT": 12429
+  },
+  "site": "linkedin",
+  "version": 1
+}

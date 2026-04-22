@@ -1,0 +1,8 @@
+{
+  "ports": {
+    "BACKEND_PORT": 12138,
+    "FRONTEND_PORT": 12093
+  },
+  "site": "discogs",
+  "version": 1
+}

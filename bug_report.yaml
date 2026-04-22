@@ -1,0 +1,36 @@
+general_prompt: |
+  We are building a production-ready clone of the website.
+  You need to refer the "landingpage.png" and "screenshot_x.png" files to implement the website that is fully functional and visually identical to the reference screenshot.
+  Also, please note that we need python sdk that can be used to access the website's API, including the authentication process, DB access, and other related functions.
+
+bug_report_prompt: |
+  
+  Check if the server is running correctly. Refer to start_servers.sh file to start the server.
+  "reset_servers.sh" file should be fully functional to reset the servers to the initial state.
+  Please analyze all the functions and features of the website and find the bug or error.
+  Then use playwright mcp to explore the website and get the screenshot of the website that show the bug or error.
+  Use screenshot folder (if not exists, create it) to save the screenshot. The name would be bug_report_{timestamp}.png.
+  Also please explain the difference between the expected and actual result.
+
+
+
+  You can report bugs as many as you want.
+  Please note that visual similarity needs to be considered (comapre with "landingpage.png" and "screenshot_x.png" files. not images in screenshot folder).
+  Also, do not leave any placeholder buttons and links.
+
+  Write down the bug report in bug_report_{timestamp}.md file.
+
+debug_prompt: |
+
+  After you finished reporting all the bugs, you have to debug the website and fix the bugs.
+
+  You are a professional programmer that patches the given website's bug.
+  Firstly, fetch the issue report from the Github.
+  For patching the website, you have to test the website's functionality and check if it is implemented correctly.
+  Upon finished patching the website, you have to provide a detailed report that includes the following information:
+  You can use playwright mcp to check the website and get the screenshot of the website that show the bug or error.
+  Use screenshot folder (if not exists, create it) to save the screenshot. The name would be debug_{timestamp}.png.
+  Also please explain the difference between the expected and actual result.
+
+
+  Write down the bug report in debug_{timestamp, yyyy-mm-dd_hh-mm-ss}.md file.

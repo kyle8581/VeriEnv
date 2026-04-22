@@ -1,0 +1,11 @@
+{
+  "ports": {
+    "API_PORT": 12351,
+    "BACKEND_PORT": 12185,
+    "FRONTEND_PORT": 12182,
+    "PORT": 12180,
+    "WEB_PORT": 12324
+  },
+  "site": "coursera.org",
+  "version": 1
+}

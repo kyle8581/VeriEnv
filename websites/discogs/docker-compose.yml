@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: discogs
+      POSTGRES_PASSWORD: discogs
+      POSTGRES_DB: discogs
+    ports:
+      - "5432:5432"
+    volumes:
+      - discogs_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U discogs -d discogs"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  discogs_db_data:
+

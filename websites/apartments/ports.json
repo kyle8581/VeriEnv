@@ -1,0 +1,12 @@
+{
+  "ports": {
+    "API_PORT": 12328,
+    "BACKEND_PORT": 12001,
+    "FRONTEND_PORT": 12000,
+    "PORT": 12326,
+    "UI_PORT": 12329,
+    "WEB_PORT": 12327
+  },
+  "site": "apartments",
+  "version": 1
+}

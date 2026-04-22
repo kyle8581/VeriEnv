@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+  --apts-green: #2f6d2f;
+  --page-bg: #ffffff;
+  --text: #1b1b1b;
+}
+
+@theme inline {
+  --color-background: var(--page-bg);
+  --color-foreground: var(--text);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
+}
+
+.bg-apts-green {
+  background-color: var(--apts-green);
+}
+.text-apts-green {
+  color: var(--apts-green);
+}
+.ring-apts-green {
+  --tw-ring-color: var(--apts-green);
+}
+.border-apts-green {
+  border-color: var(--apts-green);
+}

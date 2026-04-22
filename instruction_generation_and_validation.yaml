@@ -1,0 +1,126 @@
+prompt : |
+  Please generate 50 various task instructions that can be conducted within this website. Please refer to the python sdk. The generated instruction should be fully validated using the python sdk.
+
+  Output file should be named as "task_instructions.json".
+  
+  Please avoid synthetic instructions.
+  
+  In terms of format, please generated a json file that contains a list of instructions. Each item of the list should be a dictionary that contains the following keys:
+
+  - instruction: the instruction of the task. It should be a string and 1-5 sentences that sounds like human user's request. Please understand this instruction is self-contained and does not require any additional context. For example, if the task needs login, you should include the login process in the instruction.
+  - python sdk tool call: the tool call of the task for verifying the instruction. You should use python sdk to verify the instruction.
+  - tool call result: the result of the tool call
+  - is_valid: whether the instruction is valid
+  - difficulty: one of easy, medium, hard. Task should be designed to be in diverse difficulty levels.
+    - Easy: simple browsing tasks with no authentication and minimal state changes.
+    - Medium: multi-step tasks requiring navigation across pages and/or a small number of stateful actions (e.g., search, filter, add/remove).
+    - Hard: tasks requiring authentication and longer action sequences with non-trivial state changes (e.g., account-specific operations, multi-step forms, persistent updates).
+
+  ## judge_for_webagent Format Specification (IMPORTANT)
+
+  The `judge_for_webagent` field MUST follow this exact JSON structure:
+
+  ```json
+  {
+    "eval_type": "rinfo" | "rprog",
+    "parse": "json" | null,
+    "checks": [
+      {
+        "op": "<operation_name>",
+        "expected": <expected_value>,
+        "path": "<json_field_name>"  // optional, for JSON responses
+      }
+    ]
+  }
+  ```
+
+  ### Required Fields:
+  
+  1. **eval_type** (required): Either "rinfo" or "rprog"
+     - "rinfo": For information-seeking tasks (comparing agent's answer with expected value)
+     - "rprog": For programmatic checks (verifying URL, page state, etc.)
+
+  2. **checks** (required): Array of check objects. Each check MUST have:
+     - **op**: The operation name. Supported operations:
+       - `exact_match`: Value must match exactly (case-insensitive)
+       - `must_include`: Value must contain the expected substring
+       - `fuzzy_match`: Value must be similar (78%+ similarity)
+       - `must_include_all`: Value must contain all expected substrings
+     - **expected**: The expected value (string, number, boolean, or array)
+
+  3. **parse** (optional): Set to "json" if the agent's answer should be parsed as JSON
+
+  4. **path** (optional): JSON field name to extract from agent's answer when parse="json"
+
+  ### Examples:
+
+  #### Example 1: Simple text answer
+  ```json
+  {
+    "eval_type": "rinfo",
+    "checks": [
+      {"op": "exact_match", "expected": "Samantha Jones"}
+    ]
+  }
+  ```
+
+  #### Example 2: Multiple values to check
+  ```json
+  {
+    "eval_type": "rinfo",
+    "checks": [
+      {"op": "must_include", "expected": "Sean Miller"},
+      {"op": "must_include", "expected": "sean@gmail.com"}
+    ]
+  }
+  ```
+
+  #### Example 3: JSON response with specific fields
+  ```json
+  {
+    "eval_type": "rinfo",
+    "parse": "json",
+    "checks": [
+      {"op": "exact_match", "path": "city", "expected": "New York"},
+      {"op": "fuzzy_match", "path": "temperature_f", "expected": "72.5"},
+      {"op": "exact_match", "path": "status", "expected": "sunny"}
+    ]
+  }
+  ```
+
+  #### Example 4: URL verification (rprog)
+  ```json
+  {
+    "eval_type": "rprog",
+    "checks": [
+      {"op": "must_include", "ref": "url", "expected": "/checkout/complete"}
+    ]
+  }
+  ```
+
+  ### DO NOT use these formats (deprecated):
+  
+  ❌ String format: `"exact_match(^a, 'value')"`
+  ❌ Using "type" instead of "eval_type"
+  ❌ Using "fn" instead of "op"  
+  ❌ Using "value" instead of "expected"
+  ❌ Using "args" array format
+  ❌ Natural language descriptions like "answer should contain..."
+  ❌ Empty checks array
+
+  ### Reference Table of Evaluation Approaches
+
+  | Task Type | Intent Example | judge_for_webagent |
+  |-----------|----------------|-------------------|
+  | Simple answer | "Tell me the name of the customer with most cancellations" | `{"eval_type": "rinfo", "checks": [{"op": "exact_match", "expected": "Samantha Jones"}]}` |
+  | Multiple values | "Find the customer name and email with phone 8015551212" | `{"eval_type": "rinfo", "checks": [{"op": "must_include", "expected": "Sean Miller"}, {"op": "must_include", "expected": "sean@gmail.com"}]}` |
+  | Approximate match | "Compare walking and driving time" | `{"eval_type": "rinfo", "checks": [{"op": "fuzzy_match", "expected": "walking: 2h58min"}, {"op": "fuzzy_match", "expected": "driving: 21min"}]}` |
+  | JSON response | "Get weather for NYC, return as JSON with city, temp, condition" | `{"eval_type": "rinfo", "parse": "json", "checks": [{"op": "exact_match", "path": "city", "expected": "NYC"}, {"op": "exact_match", "path": "condition", "expected": "sunny"}]}` |
+  | URL check | "Navigate to checkout page" | `{"eval_type": "rprog", "checks": [{"op": "must_include", "ref": "url", "expected": "/checkout"}]}` |
+
+  ## Summary
+
+  - **rinfo**: Evaluates the agent's final answer against expected values
+  - **rprog**: Programmatically verifies page state (URL, elements, etc.)
+  - Always use the dictionary format with "op" and "expected" keys
+  - Use "parse": "json" and "path" for structured JSON responses

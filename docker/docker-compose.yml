@@ -1,0 +1,95 @@
+# VeriEnv Docker Compose
+# Start individual sites: docker compose --profile apartments up -d
+# Start all sites:        docker compose --profile all up -d
+
+services:
+
+  apartments:
+    build:
+      context: ../websites/apartments
+      dockerfile: Dockerfile
+    ports:
+      - "12000:12000"
+      - "12001:12001"
+    environment:
+      - API_PORT=12001
+      - BACKEND_PORT=12001
+      - FRONTEND_PORT=12000
+      - PORT=12000
+      - UI_PORT=12000
+      - WEB_PORT=12000
+    profiles:
+      - "apartments"
+      - "all"
+    restart: unless-stopped
+
+  coursera.org:
+    build:
+      context: ../websites/coursera.org
+      dockerfile: Dockerfile
+    ports:
+      - "12182:12182"
+      - "12185:12185"
+    environment:
+      - API_PORT=12185
+      - BACKEND_PORT=12185
+      - FRONTEND_PORT=12182
+      - PORT=12182
+      - WEB_PORT=12182
+    profiles:
+      - "coursera.org"
+      - "all"
+    restart: unless-stopped
+
+  discogs:
+    build:
+      context: ../websites/discogs
+      dockerfile: Dockerfile
+    ports:
+      - "12093:12093"
+      - "12138:12138"
+    environment:
+      - BACKEND_PORT=12138
+      - FRONTEND_PORT=12093
+    profiles:
+      - "discogs"
+      - "all"
+    restart: unless-stopped
+
+  linkedin:
+    build:
+      context: ../websites/linkedin
+      dockerfile: Dockerfile
+    ports:
+      - "12054:12054"
+      - "12055:12055"
+      - "12431:12431"
+    environment:
+      - API_PORT=12054
+      - BACKEND_PORT=12054
+      - FRONTEND_PORT=12431
+      - PORT=12431
+      - SITE_PORT=12055
+      - WEB_PORT=12431
+    profiles:
+      - "linkedin"
+      - "all"
+    restart: unless-stopped
+
+  weather:
+    build:
+      context: ../websites/weather
+      dockerfile: Dockerfile
+    ports:
+      - "12125:12125"
+      - "12127:12127"
+    environment:
+      - API_PORT=12127
+      - BACKEND_PORT=12127
+      - FRONTEND_PORT=12125
+      - PORT=12125
+      - WEB_PORT=12125
+    profiles:
+      - "weather"
+      - "all"
+    restart: unless-stopped

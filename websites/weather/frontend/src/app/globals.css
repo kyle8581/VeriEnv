@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+/* Site-wide look & feel (close to screenshots) */
+:root {
+  --twc-blue-900: #083d52;
+  --twc-blue-800: #0b5672;
+  --twc-blue-700: #0f6a8b;
+  --twc-blue-600: #167aa0;
+  --twc-surface: #ffffff;
+  --twc-border: rgba(0, 0, 0, 0.08);
+  --twc-text: #0b1f2a;
+  --twc-muted: rgba(11, 31, 42, 0.65);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  color: var(--twc-text);
+  background: linear-gradient(180deg, #0d5f7d 0%, #53a6c7 60%, #0b5975 100%);
+}
+
+/* Utility: subtle card shadow similar to screenshots */
+.twc-card {
+  background: var(--twc-surface);
+  border: 1px solid var(--twc-border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+}

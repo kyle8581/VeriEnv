@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling>=1.24.2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "linkedin-clone-sdk"
+version = "0.1.0"
+description = "Python SDK for the LinkedIn clone API (auth, feed, search, jobs, local DB helper)."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27.2",
+]
+
+[project.urls]
+Repository = "https://example.invalid/linkedin-clone"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/linkedin_clone_sdk"]
+

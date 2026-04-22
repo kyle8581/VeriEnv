@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+  color: rgba(0, 0, 0, 0.9);
+  background: #f4f2ee;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* LinkedIn-like avatar placeholder */
+.avatar-placeholder {
+  background: linear-gradient(135deg, #70b5f9 0%, #0073b1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+}/* Card hover effect */
+.linkedin-card {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease;
+}.linkedin-card:hover {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.08);
+}/* Action button hover */
+.action-btn {
+  transition: background-color 0.15s ease;
+}.action-btn:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}/* LinkedIn blue accent */
+.linkedin-blue {
+  color: #0a66c2;
+}.linkedin-blue-bg {
+  background-color: #0a66c2;
+}.linkedin-blue-bg:hover {
+  background-color: #004182;
+}

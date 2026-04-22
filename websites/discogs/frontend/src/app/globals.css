@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Discogs-like subtle page background sections */
+.page {
+  background: #fff;
+}

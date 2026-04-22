@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+pydantic-settings
+email-validator
+sqlalchemy
+alembic
+psycopg[binary]
+python-jose[cryptography]
+bcrypt
+python-multipart
+orjson
+httpx
+faker
+tenacity

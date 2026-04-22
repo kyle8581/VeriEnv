@@ -1,0 +1,11 @@
+fastapi[standard]==0.115.6
+sqlalchemy==2.0.37
+alembic==1.14.1
+pydantic-settings==2.7.1
+email-validator
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.20
+httpx==0.28.1
+tenacity==9.0.0
+faker==33.3.1

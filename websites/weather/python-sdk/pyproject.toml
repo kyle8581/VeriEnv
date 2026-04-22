@@ -1,0 +1,21 @@
+[build-system]
+requires = ["hatchling>=1.26.3"]
+build-backend = "hatchling.build"
+
+[project]
+name = "weather-portal-sdk"
+version = "0.1.0"
+description = "Python SDK for the Weather Portal API"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "httpx>=0.28.1",
+  "pydantic>=2.10.4",
+]
+
+[project.urls]
+Homepage = "https://example.invalid"
+
+[tool.hatch.build.targets.wheel]
+packages = ["weather_sdk"]
+

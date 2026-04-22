@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling>=1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "discogs-sdk"
+version = "0.1.0"
+description = "Python SDK for the Discogs clone API."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://example.invalid"
+
+[tool.hatch.build.targets.wheel]
+packages = ["discogs_sdk"]
+
